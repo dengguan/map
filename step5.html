@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>城市选择组件</title>
+  <link rel="stylesheet" type="text/css" href="citySelect/css/city-select.css">
+</head>
+<body>
+  <h2>城市单选</h2>
+  <div class="city-select" id="single-select-1">
+    <div class="city-info">
+      <div class="city-name">
+        <span>北京市</span>
+        <span>北京市</span>
+        <span>北京市</span>
+        <span>北京市</span>
+      </div>
+      <div class="city-input">
+        <input type="text" class="input-search" value="" placeholder="请选择城市" />
+      </div>
+    </div>
+    <ul class="city-list hide">
+      <li class="caller active"><span class="name">北京市</span><span class="spell">beijingshi</span></li>
+      <li class="caller"><span class="name">北京市</span><span class="spell">beijingshi</span></li>
+      <li class="caller"><span class="name">北京市</span><span class="spell">beijingshi</span></li>
+      <li class="caller"><span class="name">北京市</span><span class="spell">beijingshi</span></li>
+      <li class="caller"><span class="name">北京市</span><span class="spell">beijingshi</span></li>
+      <li class="caller"><span class="name">北京市</span><span class="spell">beijingshi</span></li>
+      <li class="caller"><span class="name">北京市</span><span class="spell">beijingshi</span></li>
+      <li class="caller"><span class="name">北京市</span><span class="spell">beijingshi</span></li>
+    </ul>
+    <div class="city-pavilion hide">
+      <div class="city-tabs">
+        <a href="javascript:;" class="active">热门城市</a>
+        <a href="javascript:;">AB</a>
+        <a href="javascript:;">CD</a>
+        <a href="javascript:;">EFG</a>
+        <a href="javascript:;">H</a>
+        <a href="javascript:;">J</a>
+        <a href="javascript:;">KL</a>
+        <a href="javascript:;" class="forbid">MNP</a>
+        <a href="javascript:;">QR</a>
+        <a href="javascript:;">S</a>
+        <a href="javascript:;">T</a>
+        <a href="javascript:;">W</a>
+        <a href="javascript:;">X</a>
+        <a href="javascript:;">Y</a>
+        <a href="javascript:;">Z</a>
+      </div>
+      <div class="city-cont">
+        <dl class="city-HOT">
+          <dd>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+            <a href="javascript:;">北京市</a>
+          </dd>
+        </dl>
+        <p>*可以直接搜索查找城市（支持名称、拼音模糊搜索）<a href="javascript:;">清空</a><span>5</span></p>
+        <div class="city-tips">最多只能选择<span>5</span>项</div>
+      </div>
+    </div>
+  </div><!-- end .city-select -->
+
+  <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="citySelect/js/citydata.min.js"></script>
+  <script type="text/javascript" src="citySelect/js/citySelect-1.0.0.min.js?v=1"></script>
+  <script type="text/javascript">
+  $(function() {
+
+    // 单选
+    var singleSelect1 = $('#single-select-1').citySelect({
+      dataJson: cityData,
+      multiSelect: false,
+      shorthand: true,
+      search: true,
+      onInit: function () {
+        console.log(this)
+      },
+      onTabsAfter: function (target) {
+        console.log(target)
+      },
+      onCallerAfter: function (target, values) {
+        console.log(JSON.stringify(values))
+      }
+    });
+
+    // 单选设置城市
+    singleSelect1.setCityVal('北京市');
+
+    // 单选
+    var singleSelect2 = $('#single-select-2').citySelect({
+      dataJson: cityData
+    });
+
+    // 单选设置城市
+    singleSelect2.setCityVal('北京市');
+    
+        var an=$('div .city-info span');
+        alert(an.text());
+      
+      
+     // var an=$('div .city-info span');
+     // an.bind('DOMNodeInserted',function(e){
+     //  alert($(e.target).text());
+     // });
+
+    // // 禁止点击显示的接口
+    // singleSelect2.status('readonly');
+
+    // //单选
+    // var singleSelect3 = $('#single-select-3').citySelect({
+    //   dataJson: cityData
+    // });
+
+    // // 单选设置城市
+    // singleSelect3.setCityVal('广州市');
+
+    // // 禁止点击显示的接口
+    // singleSelect3.status('disabled');
+
+    // // 多选
+    // var MulticitySelect1 = $('#multi-select-1').citySelect({
+    //   dataJson: cityData,
+    //   multiSelect: true,
+    //   multiMaximum: 6,
+    //   search: false,
+    //   onInit: function () {
+    //     console.log(this)
+    //   },
+    //   onForbid: function () {
+    //     console.log(this)
+    //   },
+    //   onTabsAfter: function (target) {
+    //     console.log(event)
+    //   },
+    //   onCallerAfter: function (target, values) {
+    //     console.log(JSON.stringify(values))
+    //   }
+    // });
+
+    // // 多选设置城市接口
+    // MulticitySelect1.setCityVal('北京市, 天津市, 上海市, 广州市, 长沙市, 唐山市');
+
+    // // 多选-自定义热门城市-搜索
+    // var MulticitySelect2 = $('#multi-select-2').citySelect({
+    //   dataJson: cityData,
+    //   multiSelect: true,
+    //   search: true,
+    //   multiType: 1,
+    //   hotCity: ['北京市', '上海市', '广州市', '深圳市', '南京市', '杭州市', '天津市', '重庆市', '成都市', '青岛市', '苏州市', '无锡市', '常州市', '温州市', '武汉市', '长沙市', '石家庄市', '南昌市', '三亚市', '合肥市'],
+    //   onInit: function () {
+    //     console.log(this)
+    //   },
+    //   onForbid: function () {
+    //     console.log(this)
+    //   },
+    //   onTabsAfter: function (target) {
+    //     console.log(event)
+    //   },
+    //   onCallerAfter: function (target, values) {
+    //     console.log(JSON.stringify(values))
+    //   }
+    // });
+
+    // // 多选设置城市接口
+    // MulticitySelect2.setCityVal('北京市, 天津市, 上海市, 广州市, 长沙市, 唐山市');
+
+    // //sb=$('div .city-info span');
+    // //sb.change(function(){alert(sb.text())});
+
+  });
+  </script>
+</body>
